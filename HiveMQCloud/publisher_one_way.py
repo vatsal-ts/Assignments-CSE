@@ -2,9 +2,28 @@ import ssl
 from paho import mqtt
 import paho.mqtt.client as paho
 import paho.mqtt.publish as publish
+import json
+import os
+import sys
 
 # Set up the MQTT broker connection parameters
-from creds.vatsal import hostname, username, password  # Import credentials from credentials.py
+sys.path.append('D:/btp/BTP_MQTT/HiveMQCloud')
+
+with open('./HiveMQCloud/hivemq_creds/vatsal.json', 'r') as config_file:
+    config = json.load(config_file)
+    mqtt_credentials = config.get("mqtt_credentials")
+
+# Check if the credentials are loaded successfully
+if not mqtt_credentials:
+    print("Error: Unable to load MQTT credentials from the configuration file.")
+    exit(1)
+
+# Extract MQTT credentials
+hostname = mqtt_credentials["hostname"]
+username = mqtt_credentials["username"]
+password = mqtt_credentials["password"]
+
+
 port=8883
 
 # Create an SSL context for secure connection with HiveMQ Cloud
