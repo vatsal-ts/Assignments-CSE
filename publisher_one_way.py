@@ -4,10 +4,8 @@ import paho.mqtt.client as paho
 import paho.mqtt.publish as publish
 
 # Set up the MQTT broker connection parameters
-hostname = "37d997fa2a7b4a6cbf23470c5d089a86.s2.eu.hivemq.cloud"
-port = 8883
-username = "vatsal"
-password = "BtpVatsalPranshu1"
+from creds.vatsal import hostname, username, password  # Import credentials from credentials.py
+port=8883
 
 # Create an SSL context for secure connection with HiveMQ Cloud
 sslSettings = ssl.SSLContext(mqtt.client.ssl.PROTOCOL_TLS)
@@ -34,14 +32,6 @@ while True:
 client.disconnect()
 
 '''
-import paho.mqtt.client as paho
-
-# Set up the MQTT broker connection parameters
-hostname = "37d997fa2a7b4a6cbf23470c5d089a86.s2.eu.hivemq.cloud"
-port = 1883  # Default non-TLS MQTT port
-username = "vatsal"
-password = "BtpVatsalPranshu1"
-
 # Connect to the MQTT broker
 client = paho.Client()
 client.username_pw_set(username, password)
