@@ -4,10 +4,8 @@ import paho.mqtt.client as mqtt
 import paho.mqtt.subscribe as subscribe
 
 # Set up MQTT broker connection parameters
-hostname = "37d997fa2a7b4a6cbf23470c5d089a86.s2.eu.hivemq.cloud"
-port = 8883
-username = "pranshu"
-password = "BtpVatsalPranshu1"
+from creds.vatsal import hostname, username, password  # Import credentials from credentials.py
+port=8883
 
 # Create an SSL context for a secure connection with HiveMQ Cloud
 ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS)
